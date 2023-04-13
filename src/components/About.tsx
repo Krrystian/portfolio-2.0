@@ -78,21 +78,21 @@ export const About = () => {
       </div>
       <div className="h-[100vh] flex flex-col text-center text-white md:mx-24 mx-6 cursor-default">
         <Parallax>
-          <h2 className="text-8xl md:mb-3 flex flex-col md:flex-row justify-center">
+          <h2 className="md:text-8xl text-5xl flex flex-col md:flex-row justify-center border-b-2 md:border-none border-[#fb4f14]">
             {line.split(" ").map((word, index) => {
               return (
                 <motion.div
                   key={index}
                   animate={hover == index * 2 ? { color: "#fb4f14" } : {}}
                   transition={{ duration: 1 }}
-                  className="mb-6 m-4"
+                  className="md:mb-6 md:m-4 m-1"
                 >
                   {word}
                 </motion.div>
               );
             })}
           </h2>
-          <div className="grid md:grid-cols-3 grid-cols-1">
+          <div className="grid md:grid-cols-3 grid-cols-2">
             {items.map((item, index) => {
               return (
                 <motion.div
@@ -100,13 +100,18 @@ export const About = () => {
                   onHoverStart={() => setHover(index)}
                   onHoverEnd={() => setHover(-1)}
                   whileHover={{ rotate: Math.floor(Math.random() * 21) - 10 }}
-                  className="flex flex-col"
+                  className={
+                    index == 2 ? "flex flex-col col-span-2" : "flex flex-col"
+                  }
                 >
-                  <h3 className="text-5xl mb-3">{item.heading}</h3>
+                  <h3 className="md:text-5xl text-3xl  m-3">{item.heading}</h3>
                   <ul className="text-neutral-300">
                     {item.list.map((element, index) => {
                       return (
-                        <li className="text-2xl" key={element + index}>
+                        <li
+                          className="md:text-2xl text-xl "
+                          key={element + index}
+                        >
                           {element}
                         </li>
                       );
