@@ -76,9 +76,9 @@ export const About = () => {
           </motion.div>
         </Parallax>
       </div>
-      <div className="h-[100vh] flex flex-col text-center text-white md:mx-24 mx-6 cursor-default">
+      <div className="h-[50vh] flex flex-col text-center text-white md:mx-24 mx-6 cursor-default">
         <Parallax>
-          <h2 className="md:text-8xl text-5xl flex flex-col md:flex-row justify-center border-b-2 md:border-none border-[#fb4f14]">
+          <h2 className="md:text-7xl lg:text-8xl text-5xl flex flex-col md:flex-row justify-center border-b-2 md:border-none border-[#fb4f14]">
             {line.split(" ").map((word, index) => {
               return (
                 <motion.div
@@ -101,7 +101,9 @@ export const About = () => {
                   onHoverEnd={() => setHover(-1)}
                   whileHover={{ rotate: Math.floor(Math.random() * 21) - 10 }}
                   className={
-                    index == 2 ? "flex flex-col col-span-2" : "flex flex-col"
+                    index == 2
+                      ? "flex flex-col md:col-span-1 col-span-2"
+                      : "flex flex-col"
                   }
                 >
                   <h3 className="md:text-5xl text-3xl  m-3">{item.heading}</h3>
