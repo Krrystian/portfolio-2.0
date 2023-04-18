@@ -76,7 +76,7 @@ export const About = () => {
           </motion.div>
         </Parallax>
       </div>
-      <div className="h-[50vh] flex flex-col text-center text-white md:mx-24 mx-6 cursor-default">
+      <div className="h-[70vh] flex flex-col text-center text-white md:mx-24 mx-6 cursor-default">
         <Parallax>
           <h2 className="md:text-7xl lg:text-8xl text-5xl flex flex-col md:flex-row justify-center border-b-2 md:border-none border-[#fb4f14]">
             {line.split(" ").map((word, index) => {
