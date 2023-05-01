@@ -15,7 +15,7 @@ export const Navbar = () => {
   return (
     <>
       <div className="fixed flex flex-col z-[9999] items-start mt-6 ml-6 text-2xl text-white">
-        <ul className="md:block hidden">
+        <ul className="xl:block hidden">
           {items.map((item, index) => {
             return (
               <motion.li
@@ -28,7 +28,7 @@ export const Navbar = () => {
             );
           })}
         </ul>
-        <div className="md:hidden">
+        <div className="xl:hidden">
           <Hamburger
             setOnClick={setOnClick}
             onClick={onClick}
@@ -39,7 +39,7 @@ export const Navbar = () => {
       </div>
       <Blackdrop onClick={onClick} items={items} />
       <motion.div
-        className="fixed z-[3] bottom-0 text-neutral-200 mb-6 ml-6 text-2xl invisible md:visible"
+        className="fixed z-[3] bottom-0 text-neutral-200 mb-6 ml-6 text-2xl invisible xl:visible"
         initial={{ opacity: 0 }}
         animate={scrollPosition > window.innerHeight / 2 ? { opacity: 1 } : {}}
         transition={{ duration: 1 }}

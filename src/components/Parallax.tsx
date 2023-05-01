@@ -11,7 +11,7 @@ export const Parallax = ({ children }: Props) => {
     target: scrollRef,
     offset: ["end end", "start start"],
   });
-  const scroll = useTransform(scrollYProgress, [0, 0.3, 0.5, 1], [0, 1, 1, 0]);
+  const scroll = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0, 1, 1, 0]);
   return (
     <>
       <motion.div

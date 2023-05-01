@@ -55,7 +55,7 @@ export const About = () => {
     <>
       <div className="h-[50vh] flex flex-col z-[1] text-center cursor-default">
         <Parallax>
-          <motion.div className=" text-white md:mx-48 mx-6 text-3xl">
+          <motion.div className=" text-white md:mx-48 mx-6 text-2xl xl:text-3xl">
             <motion.p ref={scrollRef} style={{ y: scrollValue }} className="">
               Creative,&nbsp;
               <motion.span
@@ -76,9 +76,9 @@ export const About = () => {
           </motion.div>
         </Parallax>
       </div>
-      <div className="h-[70vh] flex flex-col text-center text-white md:mx-24 mx-6 cursor-default">
+      <div className="h-[80vh] flex flex-col text-center text-white md:mx-24 mt-32 mx-6 cursor-default">
         <Parallax>
-          <h2 className="md:text-7xl lg:text-8xl text-5xl flex flex-col md:flex-row justify-center border-b-2 md:border-none border-[#fb4f14]">
+          <h2 className="md:text-7xl xl:text-8xl text-3xl flex flex-col md:flex-row justify-center border-b-2 md:border-none border-[#fb4f14]">
             {line.split(" ").map((word, index) => {
               return (
                 <motion.div
@@ -92,7 +92,9 @@ export const About = () => {
               );
             })}
           </h2>
-          <div className="grid md:grid-cols-3 grid-cols-2">
+        </Parallax>
+        <Parallax>
+          <div className="grid sm:grid-cols-3 grid-cols-2">
             {items.map((item, index) => {
               return (
                 <motion.div
@@ -102,16 +104,16 @@ export const About = () => {
                   whileHover={{ rotate: Math.floor(Math.random() * 21) - 10 }}
                   className={
                     index == 2
-                      ? "flex flex-col md:col-span-1 col-span-2"
+                      ? "flex flex-col sm:col-span-1 col-span-2 "
                       : "flex flex-col"
                   }
                 >
-                  <h3 className="md:text-5xl text-3xl  m-3">{item.heading}</h3>
+                  <h3 className="md:text-5xl text-2xl  m-3">{item.heading}</h3>
                   <ul className="text-neutral-300">
                     {item.list.map((element, index) => {
                       return (
                         <li
-                          className="md:text-2xl text-xl "
+                          className="md:text-md text-xl "
                           key={element + index}
                         >
                           {element}
