@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import React from "react";
 
 interface Props {
-  setOnClick: React.Dispatch<React.SetStateAction<boolean>>;
-  setOnHover: React.Dispatch<React.SetStateAction<boolean>>;
+  setOnClick: (value: boolean) => void;
+  setOnHover: (value: boolean) => void;
   onClick: boolean;
   onHover: boolean;
 }

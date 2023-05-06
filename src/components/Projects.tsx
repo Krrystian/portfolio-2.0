@@ -2,12 +2,10 @@ import { motion } from "framer-motion";
 import { Parallax } from "./Parallax";
 import { useState, useEffect } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-//Obrazki w roznym tempie pojawiaja sie na ekranie oraz po kliknięciu wyświetlają moduły.
-
-//KONTAKT - Pomysł: Wyświetlenie informacji na środku o mozliwosci kontaktu ze mną oraz na dole
-//po czasie animacja strzałki kontaktującej do mnie
-
-export const Projects = () => {
+interface Props {
+  refers: React.RefObject<HTMLDivElement>;
+}
+export const Projects = ({ refers }: Props) => {
   let [element, setElement] = useState<number>(0);
   useEffect(() => setElement(0), []);
   const items = [
@@ -28,6 +26,15 @@ export const Projects = () => {
       technology: "JavaScript | Bootstrap",
       github: "https://github.com/Krrystian/MysteryBox-Shop",
       website: "https://krrystian.github.io/MysteryBox-Shop/",
+    },
+    {
+      name: "Portfolio v1",
+      image: "photos/portfolio.png",
+      description:
+        "My first protfolio that has nothing to do with website styling, but it was my first attempt to make a website. I mostly used plain CSS and HTML with JavaScript to complete it. It's not mobile first =C",
+      technology: "JavaScript | HTML | CSS",
+      github: "https://github.com/Krrystian/Portfolio",
+      website: "https://krrystian.github.io/Portfolio",
     },
   ];
   type cardProps = {
@@ -51,14 +58,13 @@ export const Projects = () => {
     return (
       <motion.div
         key={index}
-        className={
-          index === element
-            ? "bg-transparent rounded-3xl w-[80%] absolute"
-            : "hidden"
-        }
+        initial={{ opacity: 0 }}
+        animate={index === element ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 1 }}
+        className="bg-transparent rounded-3xl w-[80%] absolute"
       >
-        <p className="mb-4 text-3xl lg:text-6xl text-[#fb4f14]">{name}</p>
-        <div className="text-2xl flex justify-between mb-4 lg:hidden ">
+        <p className="mb-4 text-3xl xl:text-6xl text-[#fb4f14]">{name}</p>
+        <div className="text-2xl flex justify-between mb-4 xl:hidden ">
           <motion.a href={github} whileHover={{ color: "#fb4f14" }}>
             GitHub
           </motion.a>
@@ -69,9 +75,9 @@ export const Projects = () => {
         <div className="h-full overflow-hidden flex justify-center gap-5 rounded-3xl">
           <img
             src={image}
-            className="object-cover brightness-75 shadow-slate-950 shadow-2xl lg:w-[35%]"
+            className="object-cover brightness-75 shadow-slate-950 shadow-2xl xl:w-[35%]"
           />
-          <div className="hidden lg:flex text-xl flex-col">
+          <div className="hidden xl:flex text-xl flex-col">
             <h3 className="text-4xl mt-10 md:mt-6 mb-3">Description</h3>
             <p>{description}</p>
             <h3 className="text-4xl mt-10 mb-3">Technology</h3>
@@ -97,29 +103,40 @@ export const Projects = () => {
   };
 
   return (
-    <div className=" h-[100vh] text-white flex justify-center text-6xl">
-      <div className="h-[70vh] flex justify-center text-center relative">
+    <div className=" h-[80vh] text-white flex justify-center text-6xl">
+      <div
+        ref={refers}
+        className="h-[70vh] flex justify-center text-center relative"
+      >
         <Parallax>
           <motion.div
             className={
-              "absolute cursor-pointer flex left-[-10%] lg:left-0 items-center h-[70vh] bg-[rgba(0,0,0,0.35)] rounded-2xl z-[1]"
+              element !== 0
+                ? "absolute cursor-pointer flex left-[-10%] xl:left-[4%] items-center h-[70vh] rounded-2xl z-[1]"
+                : "absolute cursor-default flex left-[-10%] xl:left-[4%] items-center h-[70vh] rounded-2xl z-[1]"
             }
             initial={{ opacity: 1 }}
             animate={element === 0 ? { opacity: 0 } : {}}
-            whileHover={{ scale: 1.05, color: "#fb4f14" }}
+            whileHover={{ scale: 1.2, color: "#fb4f14" }}
             onClick={() => {
-              setElement((element) => element - 1);
+              setElement((element) => (element > 0 ? element - 1 : element));
             }}
           >
             <MdKeyboardArrowLeft />
           </motion.div>
           <motion.div
-            className="absolute cursor-pointer flex right-[-10%] lg:right-0 items-center h-[70vh] bg-[rgba(0,0,0,0.35)] rounded-2xl z-[1]"
+            className={
+              element !== items.length - 1
+                ? "absolute cursor-pointer flex right-[-10%] xl:right-[4%] items-center h-[70vh] rounded-2xl z-[1]"
+                : "absolute cursor-default flex right-[-10%] xl:right-[4%] items-center h-[70vh] rounded-2xl z-[1]"
+            }
             initial={{ opacity: 0 }}
             animate={element !== items.length - 1 ? { opacity: 1 } : {}}
-            whileHover={{ scale: 1.05, color: "#fb4f14" }}
+            whileHover={{ scale: 1.2, color: "#fb4f14" }}
             onClick={() => {
-              setElement((element) => element + 1);
+              setElement((element) =>
+                element < items.length - 1 ? element + 1 : element
+              );
             }}
           >
             <MdKeyboardArrowRight />
@@ -128,6 +145,7 @@ export const Projects = () => {
           <div className="h-[70vh] w-[80vw] flex justify-center text-center relative overflow-hidden">
             {items.map((item, index) => (
               <Card
+                key={index}
                 index={index}
                 name={item.name}
                 image={item.image}

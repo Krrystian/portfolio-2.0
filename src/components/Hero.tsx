@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Sentence } from "./Sentence";
 import { Parallax } from "./Parallax";
 import { motion, useScroll, useTransform } from "framer-motion";
-
-export const Hero = () => {
+interface Props {
+  refers: React.RefObject<HTMLDivElement>;
+}
+export const Hero = ({ refers }: Props) => {
   const line1 = "Hello";
   const line2 = "I'm Krystian";
   const line3 = "Junior Web Developer";
@@ -20,7 +22,10 @@ export const Hero = () => {
     <>
       <div className="h-[100vh] flex flex-col justify-center items-center cursor-default z-[1]">
         <Parallax>
-          <div className="flex flex-col justify-between relative h-[40px] w-full">
+          <div
+            ref={refers}
+            className="flex flex-col justify-between relative h-[40px] w-full"
+          >
             <motion.div style={{ y: yValue1 }}>
               <Sentence
                 specs="text-neutral-400 text-5xl text-center md:text-[10rem] absolute w-full top-[-50px] md:top-[-175px]"

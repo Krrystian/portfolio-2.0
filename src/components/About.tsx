@@ -1,8 +1,11 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Parallax } from "./Parallax";
 import { useEffect, useRef, useState } from "react";
-
-export const About = () => {
+interface Props {
+  refersA: React.RefObject<HTMLDivElement>;
+  refersB: React.RefObject<HTMLDivElement>;
+}
+export const About = ({ refersA, refersB }: Props) => {
   const scrollRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   const [hover, setHover] = useState<number>(-1);
@@ -39,23 +42,14 @@ export const About = () => {
   });
 
   const line = "Essential Skills";
-
-  // type Props = {
-  //   value: string;
-  // };
-  // const ProgressBar = ({ value }: Props) => {
-  //   return (
-  //     <div className="bg-neutral-900 rounded-xl m-1 overflow-hidden">
-  //       <div className={`h-full bg-[#fb4f14] w-[30%]`}></div>
-  //     </div>
-  //   );
-  // };
-
   return (
     <>
       <div className="h-[50vh] flex flex-col z-[1] text-center cursor-default">
         <Parallax>
-          <motion.div className=" text-white md:mx-48 mx-6 text-2xl xl:text-3xl">
+          <motion.div
+            ref={refersA}
+            className="text-white md:mx-48 mx-6 text-2xl xl:text-3xl"
+          >
             <motion.p ref={scrollRef} style={{ y: scrollValue }} className="">
               Creative,&nbsp;
               <motion.span
@@ -76,7 +70,11 @@ export const About = () => {
           </motion.div>
         </Parallax>
       </div>
-      <div className="h-[80vh] flex flex-col text-center text-white md:mx-24 mt-32 mx-6 cursor-default">
+
+      <div
+        ref={refersB}
+        className="h-[60vh] flex flex-col text-center text-white md:mx-24 mt-32 mx-6 cursor-default"
+      >
         <Parallax>
           <h2 className="md:text-7xl xl:text-8xl text-3xl flex flex-col md:flex-row justify-center border-b-2 md:border-none border-[#fb4f14]">
             {line.split(" ").map((word, index) => {

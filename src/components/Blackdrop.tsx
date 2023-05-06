@@ -2,15 +2,27 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { IconContext } from "react-icons";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
+
 interface Props {
+  setOnClick: (value: boolean) => void;
   onClick: boolean;
   items: string[];
+  refers: React.RefObject<HTMLDivElement>[];
 }
 
-export const Blackdrop = ({ onClick, items }: Props) => {
+export const Blackdrop = ({ setOnClick, onClick, items, refers }: Props) => {
   const heightUser: number = window.innerHeight + 1000;
   const widthUser: number = window.innerWidth + 1000;
   const [animationCompleted, setAnimationCompleted] = useState<boolean>(false);
+
+  const scrollIntoSection = (elementRef: React.RefObject<HTMLDivElement>) => {
+    elementRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
+  };
+
   return (
     <div className="absolute h-full w-full flex justify-center items-center">
       <motion.div
@@ -40,7 +52,14 @@ export const Blackdrop = ({ onClick, items }: Props) => {
                   className="mb-4 cursor-pointer"
                   whileHover={{ color: "#fb4f14", scale: 1.2 }}
                 >
-                  <a href="">{item}</a>
+                  <a
+                    onClick={() => {
+                      scrollIntoSection(refers[index]);
+                      setOnClick(!onClick);
+                    }}
+                  >
+                    {item}
+                  </a>
                 </motion.div>
               );
             })}
