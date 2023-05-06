@@ -2,16 +2,34 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { useState } from "react";
 import { Hamburger } from "./Hamburger";
 import { Blackdrop } from "./Blackdrop";
+interface Props {
+  refers: React.RefObject<HTMLDivElement>[];
+}
 
-export const Navbar = () => {
+export const Navbar = ({ refers }: Props) => {
   const [onHover, setOnHover] = useState<boolean>(false);
   const [onClick, setOnClick] = useState<boolean>(false);
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   const { scrollY } = useScroll();
+
+  const scrollIntoSection = (elementRef: React.RefObject<HTMLDivElement>) => {
+    elementRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
+  };
+
   useMotionValueEvent(scrollY, "change", (position) =>
     setScrollPosition(position)
   );
-  const items = ["01. Main", "02. About", "03. Project", "04. Contact"];
+  const items = [
+    "01. Main",
+    "02. About",
+    "03. Skills",
+    "04. Project",
+    "05. Contact",
+  ];
   return (
     <>
       <div className="fixed flex flex-col z-[9999] items-start mt-6 ml-6 text-2xl text-white">
@@ -23,7 +41,7 @@ export const Navbar = () => {
                 className="mb-2 cursor-pointer"
                 whileHover={{ color: "#fb4f14", scale: 1.2 }}
               >
-                <a href="">{item}</a>
+                <a onClick={() => scrollIntoSection(refers[index])}>{item}</a>
               </motion.li>
             );
           })}
@@ -37,7 +55,12 @@ export const Navbar = () => {
           />
         </div>
       </div>
-      <Blackdrop onClick={onClick} items={items} />
+      <Blackdrop
+        onClick={onClick}
+        setOnClick={setOnClick}
+        items={items}
+        refers={refers}
+      />
       <motion.div
         className="fixed z-[3] bottom-0 text-neutral-200 mb-6 ml-6 text-2xl invisible xl:visible"
         initial={{ opacity: 0 }}
