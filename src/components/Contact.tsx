@@ -12,10 +12,10 @@ export const Contact = ({ refers }: Props) => {
     <div className="h-[85vh] md:h-[75vh] flex justify-center cursor-default mt-32">
       <div
         ref={refers}
-        className="h-[50vh] text-2xl md:text-2xl text-white text-center w-[90%] md:w-[60%]"
+        className="h-[50vh] text-xl md:text-2xl text-white text-center w-[90%] md:w-[60%]"
       >
         <Parallax>
-          <div className="text-2xl md:text-7xl mb-8">
+          <div className="text-3xl md:text-7xl mb-8">
             {[...line].map((word, index) => {
               return (
                 <motion.span
@@ -38,7 +38,7 @@ export const Contact = ({ refers }: Props) => {
           </div>
         </Parallax>
         <Parallax>
-          <div className="text-[#fb4f14] text-2xl md:text-3xl cursor-pointer my-8">
+          <div className="text-[#fb4f14] text-xl md:text-3xl cursor-pointer my-8">
             <a href="mailto:krystiancichorz708@gmail.com">
               krystiancichorz708@gmail.com
             </a>
