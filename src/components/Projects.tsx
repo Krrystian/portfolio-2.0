@@ -61,7 +61,11 @@ export const Projects = ({ refers }: Props) => {
         initial={{ opacity: 0 }}
         animate={index === element ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 1 }}
-        className="bg-transparent rounded-3xl w-[80%] absolute"
+        className={
+          index === element
+            ? "bg-transparent rounded-3xl w-[80%] absolute z-0"
+            : "bg-transparent rounded-3xl w-[80%] absolute z-[-1]"
+        }
       >
         <p className="mb-4 text-3xl xl:text-6xl text-[#fb4f14]">{name}</p>
         <div className="text-2xl flex justify-between mb-4 xl:hidden ">
