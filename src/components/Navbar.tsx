@@ -69,10 +69,10 @@ export const Navbar = ({ refers }: Props) => {
       >
         <p>Krystian Cichorz</p>
         <div className="flex justify-between text-xl text-neutral-400">
-          <motion.a href="" whileHover={{ scale: 1.4, color: "#fb4f14" }}>
+          <motion.a href="https://github.com/Krrystian" whileHover={{ scale: 1.4, color: "#fb4f14" }}>
             GitHub
           </motion.a>
-          <motion.a href="" whileHover={{ scale: 1.4, color: "#fb4f14" }}>
+          <motion.a href="https://www.linkedin.com/in/krystian-cichorz-647618207/" whileHover={{ scale: 1.4, color: "#fb4f14" }}>
             LinkedIn
           </motion.a>
         </div>
