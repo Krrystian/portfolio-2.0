@@ -65,10 +65,10 @@ export const Blackdrop = ({ setOnClick, onClick, items, refers }: Props) => {
             })}
             <div className="flex justify-between">
               <IconContext.Provider value={{ size: "1.5em" }}>
-                <motion.a href="" whileHover={{ color: "#fb4f14", scale: 1.2 }}>
+                <motion.a href="https://github.com/Krrystian" whileHover={{ color: "#fb4f14", scale: 1.2 }}>
                   <BsGithub />
                 </motion.a>
-                <motion.a href="" whileHover={{ color: "#fb4f14", scale: 1.2 }}>
+                <motion.a href="https://www.linkedin.com/in/krystian-cichorz-647618207/" whileHover={{ color: "#fb4f14", scale: 1.2 }}>
                   <BsLinkedin />
                 </motion.a>
               </IconContext.Provider>
