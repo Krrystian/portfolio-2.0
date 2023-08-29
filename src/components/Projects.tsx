@@ -10,6 +10,15 @@ export const Projects = ({ refers }: Props) => {
   useEffect(() => setElement(0), []);
   const items = [
     {
+      name: "Dog Shop",
+      image: "photos/dog-shop.png",
+      description:
+        "Online shop, make orders, new accounts... add products and more! Simple full-stack project: NextJS, Prisma, MongoDB. I also tried to use Figma for spacing in web's simple design.",
+      technology: "React | Typescript | Tailwind | Vite | React Router",
+      github: "https://github.com/Krrystian/dog-shop",
+      website: "https://dog-shop-flame.vercel.app",
+    },
+    {
       name: "Steak Restaurant",
       image: "photos/steak-shop.png",
       description:
