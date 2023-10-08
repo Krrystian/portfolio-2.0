@@ -10,6 +10,15 @@ export const Projects = ({ refers }: Props) => {
   useEffect(() => setElement(0), []);
   const items = [
     {
+      name: "MERN Blog",
+      image: "photos/mern-blog.png",
+      description:
+        "Simple blog project using MERN stack. The goal of this project was simple - learn MERN stack. I also tried to use Figma for spacing in web's simple design.",
+      technology: "React | MongoDB | Express | NodeJS | Redux",
+      github: "https://github.com/Krrystian/mern-blog",
+      website: "https://mern-blog-frontend-krrystian.vercel.app",
+    },
+    {
       name: "Dog Shop",
       image: "photos/dog-shop.png",
       description:
