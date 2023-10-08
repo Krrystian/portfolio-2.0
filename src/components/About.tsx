@@ -12,15 +12,22 @@ export const About = ({ refersA, refersB }: Props) => {
   const items = [
     {
       heading: "FRONTEND",
-      list: ["React", "HTML", "CSS", "JavaScript"],
-    },
-    {
-      heading: "OTHER",
-      list: ["SQL", "JAVA", "C++"],
+      list: ["React", "HTML", "CSS"],
     },
     {
       heading: "TOOLS",
       list: ["Tailwind", "Bootstrap", "Framer Motion", "TypeScript"],
+    },
+    {
+      heading: "BACKEND",
+      list: [
+        "NextJS 13",
+        "NodeJS",
+        "Express",
+        "MongoDB",
+        "Redux",
+        "Prisma/Mongoose",
+      ],
     },
   ];
 
@@ -60,12 +67,11 @@ export const About = ({ refersA, refersB }: Props) => {
                 }
                 transition={{ duration: 1 }}
               >
-                Website Designer
+                full-stack developer
               </motion.span>
               , taking first career steps. I put user on the first place to
               guarantee great experience. I like to explore new fields, overcome
-              my anxieties. The best feeling is when you have an idea and you
-              try to execute it.
+              my anxieties. I'm always open to new challenges.
             </motion.p>
           </motion.div>
         </Parallax>
@@ -73,7 +79,7 @@ export const About = ({ refersA, refersB }: Props) => {
 
       <div
         ref={refersB}
-        className="h-[60vh] flex flex-col text-center text-white md:mx-24 mt-32 mx-6 cursor-default"
+        className="h-[100vh] flex flex-col text-center text-white md:mx-24 mt-32 mx-6 cursor-default"
       >
         <Parallax>
           <h2 className="md:text-7xl xl:text-8xl text-3xl flex flex-col md:flex-row justify-center border-b-2 md:border-none border-[#fb4f14]">

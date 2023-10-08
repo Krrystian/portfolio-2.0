@@ -130,7 +130,7 @@ export const Projects = ({ refers }: Props) => {
         ref={refers}
         className="h-[70vh] flex justify-center text-center relative"
       >
-        <Parallax>
+        <Parallax noOpacity>
           <motion.div
             className={
               element !== 0

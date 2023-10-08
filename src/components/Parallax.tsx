@@ -3,9 +3,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 interface Props {
   children: ReactNode;
+  noOpacity?: boolean;
 }
 
-export const Parallax = ({ children }: Props) => {
+export const Parallax = ({ children, noOpacity }: Props) => {
   const scrollRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: scrollRef,
@@ -15,7 +16,7 @@ export const Parallax = ({ children }: Props) => {
   return (
     <>
       <motion.div
-        style={{ opacity: scroll, scale: 1 }}
+        style={noOpacity ? {} : { opacity: scroll, scale: 1 }}
         ref={scrollRef}
         transition={{ duration: 1 }}
         className="w-full"
