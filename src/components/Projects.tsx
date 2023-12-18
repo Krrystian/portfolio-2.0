@@ -10,6 +10,15 @@ export const Projects = ({ refers }: Props) => {
   useEffect(() => setElement(0), []);
   const items = [
     {
+      name: "MERN Todo",
+      image: "photos/mern-todo.png",
+      description:
+        "Simple website to learn authorization and token passing via cookies, deployed on Vercel. Make sure you have 3rd party cookies allowed!",
+      technology: "React | MongoDB | Express | NodeJS | Redux",
+      github: "https://github.com/Krrystian/mern-todo",
+      website: "https://mern-todo-frontend-nine.vercel.app",
+    },
+    {
       name: "MERN Blog",
       image: "photos/mern-blog.png",
       description:
